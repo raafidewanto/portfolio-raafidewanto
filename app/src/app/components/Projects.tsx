@@ -62,7 +62,7 @@ const projects: Project[] = [
       "MongoDB",
       "JSON Web Token",
     ],
-    images: ["/nexwork-login.PNG", "/nexwork-home.PNG", "/nexwork-profile.PNG"],
+    images: ["/nexwork-login.png", "/nexwork-home.png", "/nexwork-profile.png"],
     type: "mobile",
     github: "https://github.com/H8-FSJS-P3S6/gc01-raafidewanto.git",
     demo: "https://expo.dev/preview/update?message=Change+image+height&updateRuntimeVersion=1.0.0&createdAt=2026-08-01T10%3A12%3A45.761Z&slug=exp&projectId=a856ee53-b936-4103-82e5-bf7801cae280&group=9563ce43-f5c7-466a-bab0-0e946685b57c",
