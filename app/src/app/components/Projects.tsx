@@ -12,6 +12,27 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: "Ruang — AI-Powered Task Management System",
+    description:
+      "Ruang is a task management web application designed to help users organize projects and tasks efficiently. The application supports project and task management, task assignment, status and priority tracking, role-based access, and authentication. It also integrates AI-powered commands using Gemini API to create or manage tasks from natural-language instructions. Redis caching is implemented to improve data retrieval performance, while audit logging records important system activities.",
+    technologies: [
+      "Node.js",
+      "Express.js",
+      "React.js",
+      "Vite",
+      "PostgreSQL",
+      "Redis",
+      "Gemini API",
+      "Sequelize",
+      "REST API",
+    ],
+    images: ["/home-ruang.png"],
+    type: "web",
+    github: "https://github.com/raafidewanto/AI-task-management.git",
+    demo: "https://ruang-task-management.vercel.app/",
+  },
+
+  {
     title: "VitaFlux — Blood Donation Mobile Platform",
     description:
       "A cross-platform blood donation app connecting donors with healthcare facilities through location-based blood matching, with features including donor screening, blood requests, QR check-in, donation tracking, and push notifications.",
