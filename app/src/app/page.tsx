@@ -1,3 +1,4 @@
+import ScrollEffects from "./components/ScrollEffects";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -7,6 +8,7 @@ import Contact from "./components/Contacts";
 export default function Home() {
   return (
     <main className="portfolio">
+      <ScrollEffects />
       <Navbar />
       <Hero />
       <About />

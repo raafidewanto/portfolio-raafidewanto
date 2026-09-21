@@ -227,6 +227,34 @@ h1, h2, h3 { text-wrap: balance; }
   .contact-title { font-size: 3.5rem; max-width: 12ch; }
   .contact-action { margin-top: 0; }
 }
+/* Scroll accents remain decorative: no hidden content or intercepted scrolling. */
+
+.navigation { transition: box-shadow 180ms ease; }
+.portfolio[data-scrolled] .navigation { box-shadow: 0 1px 0 var(--line); }
+.project-number { position: relative; padding-bottom: 10px; }
+.project-number::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(var(--project-progress, 0));
+  transform-origin: left;
+}
+.project-title { transition: color 200ms ease; }
+.project[data-reading] .project-title { color: var(--accent); }
+/* Opacity-only reveals cannot shift content or change scroll geometry.
+   No nested animations, delayed children, or scroll-driven translations. */
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal {
+    opacity: .6;
+    transition: opacity 650ms cubic-bezier(.25, .1, .25, 1);
+  }
+  .scroll-reveal.scroll-revealed,
+  .scroll-reveal:focus-within { opacity: 1; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
