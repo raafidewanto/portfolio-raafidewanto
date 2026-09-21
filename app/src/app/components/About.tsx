@@ -1,3 +1,5 @@
+import Skill from "./Skill";
+
 const certificates = [
   {
     title: "Full Stack JavaScript Program",
@@ -39,15 +41,15 @@ const certificates = [
 
 export default function About() {
   return (
-    <section id="about" className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
+    <section id="about" className="section about-section">
+      <div className="container">
         {/* Heading */}
-        <div className="mb-12">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-indigo-400">
+        <div className="about-intro">
+          <h2 className="section-label">
             About
-          </p>
+          </h2>
 
-          <p className="mt-5 max-w-2xl leading-relaxed text-gray-600 dark:text-gray-400">
+          <p className="about-description">
             Information Systems graduate from Gunadarma University and aspiring
             Full Stack Developer with hands-on experience building web and
             mobile applications using JavaScript, TypeScript, React, Next.js,
@@ -62,82 +64,77 @@ export default function About() {
         </div>
 
         {/* About Grid */}
-        <div className="grid gap-5 md:grid-cols-2">
+        <div className="about-details">
           {/* Education */}
-          <div className="rounded-2xl border border-gray-200/80 bg-white/80 p-6 backdrop-blur-sm transition-all duration-500 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 dark:border-white/[0.08] dark:bg-white/[0.02]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400">
+          <div className="detail-block">
+            <h2 className="section-label">
               Education
-            </p>
+            </h2>
 
-            <h3 className="mt-5 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="entry-title">
               Gunadarma University
             </h3>
 
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p className="entry-meta">
               Bachelor of Information Systems
             </p>
 
-            <p className="mt-3 text-sm text-gray-500 dark:text-gray-600">
+            <p className="entry-date">
               Aug 2018 - Oct 2023
             </p>
           </div>
 
           {/* Experience */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-indigo-500/30 dark:border-white/[0.08] dark:bg-white/[0.02]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400">
+          <div className="detail-block">
+            <h2 className="section-label">
               Experience
-            </p>
+            </h2>
 
-            <h3 className="mt-5 text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="entry-title">
               PT MAP Active Adiperkasa
             </h3>
 
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            <p className="entry-meta">
               Store Associate
             </p>
 
-            <p className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-600">
+            <p className="entry-description">
               Responsible for inventory management, stock opname, incoming goods
               verification, and store operations.
             </p>
 
-            <p className="mt-3 text-sm leading-relaxed text-gray-500 dark:text-gray-600">
+            <p className="entry-date">
               Jul 2024 - May 2026
             </p>
           </div>
 
           {/* Skills */}
-          <div className="rounded-2xl border border-gray-200 bg-white p-6 transition hover:border-indigo-500/30 md:col-span-2 dark:border-white/[0.08] dark:bg-white/[0.02]">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400">
+          <div className="detail-block">
+            <h2 className="section-label">
               Skills
-            </p>
+            </h2>
 
-            <div className="mt-6 space-y-6">
+            <div className="skill-groups">
               {/* Languages */}
               <div>
-                <h3 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <h3 className="skill-category">
                   Languages
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="skill-list">
                   {["JavaScript", "TypeScript", "HTML", "CSS"].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {skill}
-                    </span>
+                    <Skill key={skill} name={skill} />
                   ))}
                 </div>
               </div>
 
               {/* Frontend */}
               <div>
-                <h3 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <h3 className="skill-category">
                   Frontend
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="skill-list">
                   {[
                     "React",
                     "Next.js",
@@ -149,23 +146,18 @@ export default function About() {
                     "Bootstrap",
                     "Apollo Client",
                   ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {skill}
-                    </span>
+                    <Skill key={skill} name={skill} />
                   ))}
                 </div>
               </div>
 
               {/* Backend */}
               <div>
-                <h3 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <h3 className="skill-category">
                   Backend
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="skill-list">
                   {[
                     "Node.js",
                     "Express.js",
@@ -179,48 +171,33 @@ export default function About() {
                     "bcryptjs",
                     "JSON Web Token",
                   ].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {skill}
-                    </span>
+                    <Skill key={skill} name={skill} />
                   ))}
                 </div>
               </div>
 
               {/* Database */}
               <div>
-                <h3 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <h3 className="skill-category">
                   Database
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="skill-list">
                   {["PostgreSQL", "MongoDB", "MySQL"].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {skill}
-                    </span>
+                    <Skill key={skill} name={skill} />
                   ))}
                 </div>
               </div>
 
               {/* Languages & Others */}
               <div>
-                <h3 className="mb-3 text-sm font-medium text-gray-700 dark:text-gray-300">
+                <h3 className="skill-category">
                   Languages & Others
                 </h3>
 
-                <div className="flex flex-wrap gap-2">
+                <div className="skill-list">
                   {["Indonesia", "English", "Git"].map((skill) => (
-                    <span
-                      key={skill}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {skill}
-                    </span>
+                    <Skill key={skill} name={skill} />
                   ))}
                 </div>
               </div>
@@ -228,27 +205,27 @@ export default function About() {
           </div>
 
           {/* Certificate & Awards */}
-          <div className="rounded-2xl border border-gray-200 bg-white/80 p-6 shadow-sm backdrop-blur-sm transition-all duration-300 hover:border-indigo-500/30 hover:shadow-lg hover:shadow-indigo-500/5 dark:border-white/[0.08] dark:bg-white/[0.02] md:col-span-2">
-            <p className="text-xs font-medium uppercase tracking-[0.2em] text-indigo-400">
+          <div className="detail-block">
+            <h2 className="section-label">
               Certificates & Awards
-            </p>
+            </h2>
 
-            <div className="mt-5 space-y-4">
+            <div className="certificate-list">
               {certificates.map((certificate) => (
                 <div
                   key={certificate.title}
-                  className="flex flex-col gap-4 rounded-xl border border-gray-200 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-indigo-400/50 hover:shadow-md hover:shadow-indigo-500/5 dark:border-white/[0.08] dark:bg-white/[0.02] sm:flex-row sm:items-center sm:justify-between"
+                  className="certificate"
                 >
                   <div>
-                    <h3 className="text-lg font-semibold">
+                    <h3 className="entry-title">
                       {certificate.title}
                     </h3>
 
-                    <p className="mt-2 text-sm text-gray-400">
+                    <p className="entry-meta">
                       {certificate.issuer}
                     </p>
 
-                    <p className="mt-2 text-sm text-gray-600">
+                    <p className="entry-meta">
                       {certificate.date}
                     </p>
                   </div>
@@ -257,7 +234,7 @@ export default function About() {
                     href={certificate.file}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-fit rounded-full border border-indigo-500/30 px-5 py-2 text-sm font-medium text-indigo-300 transition hover:border-indigo-400/50 hover:text-indigo-200"
+                    className="text-link certificate-link"
                   >
                     View Certificate ↗
                   </a>

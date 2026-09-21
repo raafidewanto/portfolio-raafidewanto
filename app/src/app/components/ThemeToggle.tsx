@@ -1,20 +1,20 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+
+const subscribe = () => () => {};
+const clientSnapshot = () => true;
+const serverSnapshot = () => false;
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const mounted = useSyncExternalStore(subscribe, clientSnapshot, serverSnapshot);
 
   if (!mounted) {
     return (
       <button
-        className="h-9 w-9 rounded-full border border-gray-200 bg-gray-50 dark:border-white/10 dark:bg-white/[0.03]"
+        className="theme-toggle"
         aria-label="Toggle theme"
       />
     );
@@ -25,13 +25,13 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-gray-50 text-gray-600 transition hover:border-indigo-400/50 hover:text-indigo-500 dark:border-white/10 dark:bg-white/[0.03] dark:text-gray-400 dark:hover:text-white"
+      className="theme-toggle"
       aria-label="Toggle theme"
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
     >
       <span
         key={isDark ? "sun" : "moon"}
-        className="text-base transition-transform duration-300"
+        className="theme-symbol"
       >
         {isDark ? "☀" : "☾"}
       </span>

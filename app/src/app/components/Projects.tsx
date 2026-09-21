@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Skill from "./Skill";
 
 type Project = {
   title: string;
@@ -132,98 +133,86 @@ const projects: Project[] = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="px-6 py-24">
-      <div className="mx-auto max-w-5xl">
+    <section id="projects" className="section projects-section">
+      <div className="container">
         {/* Heading */}
-        <div className="mb-12">
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.25em] text-indigo-400">
+        <div className="section-heading">
+          <h2 className="section-title">
             Projects
-          </p>
-
-          <p className="mt-4 max-w-2xl text-gray-600 dark:text-gray-500">
-            A selection of projects I&apos;ve worked on while learning and
-            developing my skills in web and mobile development.
-          </p>
+          </h2>
         </div>
 
         {/* Project Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="project-list">
           {projects.map((project, index) => (
             <article
               key={project.title}
-              className="group overflow-hidden rounded-2xl border border-gray-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-indigo-500/30 hover:bg-gray-50 dark:border-white/[0.08] dark:bg-white/[0.02] dark:hover:bg-white/[0.04]"
+              className={`project project-${project.type}`}
             >
               {/* Project Image */}
               {project.type === "mobile" ? (
-                <div className="relative flex aspect-video items-center justify-center gap-3 overflow-hidden border-b border-gray-200 bg-gray-50 dark:border-white/[0.08] dark:bg-white/[0.02]">
-                  {/* Glow */}
-                  <div className="absolute h-48 w-48 rounded-full bg-indigo-500/10 blur-3xl" />
+                <div className="project-gallery project-gallery-mobile">
 
                   {/* Mobile Screenshots */}
-                  {project.images.slice(0, 3).map((image, imageIndex) => (
+                  {project.images.map((image, imageIndex) => (
                     <div
                       key={image}
-                      className="relative h-[240px] w-[120px] overflow-hidden rounded-[20px] border border-gray-300 bg-black shadow-2xl dark:border-white/20"
+                      className="mobile-shot"
                     >
                       <Image
                         src={image}
                         alt={`${project.title} screenshot ${imageIndex + 1}`}
                         fill
-                        sizes="120px"
-                        className="object-cover"
+                        sizes="(max-width: 600px) 27vw, (max-width: 1000px) 25vw, 240px"
+                        className="project-image"
                       />
                     </div>
                   ))}
                 </div>
               ) : (
-                <div className="relative aspect-video overflow-hidden border-b border-gray-200 dark:border-white/[0.08]">
+                <div className="project-gallery project-gallery-web">
                   <Image
                     src={project.images[0]}
                     alt={`${project.title} project screenshot`}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover transition duration-500 group-hover:scale-105"
+                    sizes="(max-width: 600px) 90vw, (max-width: 1200px) 85vw, 1100px"
+                    className="project-image"
                   />
                 </div>
               )}
 
               {/* Project Content */}
-              <div className="p-6">
+              <div className="project-content">
                 {/* Project Number */}
-                <p className="text-sm text-gray-400 dark:text-gray-600">
+                <p className="project-number">
                   0{index + 1}
                 </p>
 
                 {/* Title */}
-                <h3 className="mt-6 text-xl font-semibold text-gray-900 dark:text-white">
+                <h3 className="project-title">
                   {project.title}
                 </h3>
 
                 {/* Description */}
-                <p className="mt-3 leading-relaxed text-gray-600 dark:text-gray-500">
+                <p className="project-description">
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="technology-list">
                   {project.technologies.map((technology) => (
-                    <span
-                      key={technology}
-                      className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1 text-xs text-gray-600 transition hover:border-indigo-500/30 hover:text-gray-900 dark:border-white/[0.08] dark:bg-white/[0.02] dark:text-gray-400 dark:hover:text-gray-200"
-                    >
-                      {technology}
-                    </span>
+                    <Skill key={technology} name={technology} compact />
                   ))}
                 </div>
 
                 {/* Links */}
-                <div className="mt-8 flex gap-5 text-sm font-medium">
+                <div className="project-links">
                   {project.github && (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-700 transition hover:text-indigo-500 dark:text-gray-300 dark:hover:text-white"
+                      className="text-link"
                     >
                       GitHub ↗
                     </a>
@@ -234,7 +223,7 @@ export default function Projects() {
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-500 transition hover:text-indigo-500 dark:text-gray-500 dark:hover:text-white"
+                      className="text-link"
                     >
                       Live Demo ↗
                     </a>
