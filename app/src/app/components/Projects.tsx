@@ -1,5 +1,18 @@
-import Image from "next/image";
+import Image, { type StaticImageData } from "next/image";
+import ruangScreenshot from "../../../public/home-ruang.png";
+import nordScreenshot from "../../../public/home-nord.png";
+import quizScreenshot from "../../../public/quiz.png";
+import gigshubScreenshot from "../../../public/gigshub-home.png";
 import Skill from "./Skill";
+
+// Static imports supply the actual dimensions and a content-hashed image URL.
+// Cropping/replacing a screenshot updates its ratio and cache key automatically.
+const webScreenshots: Record<string, StaticImageData> = {
+  "/home-ruang.png": ruangScreenshot,
+  "/home-nord.png": nordScreenshot,
+  "/quiz.png": quizScreenshot,
+  "/gigshub-home.png": gigshubScreenshot,
+};
 
 type Project = {
   title: string;
@@ -172,10 +185,9 @@ export default function Projects() {
               ) : (
                 <div className="project-gallery project-gallery-web">
                   <Image
-                    src={project.images[0]}
+                    src={webScreenshots[project.images[0]]}
                     alt={`${project.title} project screenshot`}
-                    fill
-                    sizes="(max-width: 600px) 90vw, (max-width: 1200px) 85vw, 1100px"
+                    sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 1320px) 91vw, 1200px"
                     className="project-image"
                   />
                 </div>

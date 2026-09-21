@@ -133,7 +133,8 @@ h1, h2, h3 { text-wrap: balance; }
 .project:last-child { padding-bottom: 0; }
 .project-gallery { position: relative; min-width: 0; }
 .project-image { object-fit: contain; }
-.project-gallery-web { grid-column: 1 / -1; aspect-ratio: 8 / 5; background: var(--surface); }
+.project-gallery-web { grid-column: 1 / -1; background: var(--surface); }
+.project-gallery-web .project-image { display: block; width: 100%; height: auto; }
 .project-web .project-content { grid-column: 1 / -1; row-gap: 16px; }
 .project-number { font-family: var(--font-display), Georgia, serif; font-size: 1.25rem; font-style: italic; color: var(--accent); line-height: 1.4; }
 .project-title { font-size: clamp(1.5rem, 2.6vw, 2.25rem); font-weight: 500; line-height: 1.2; letter-spacing: -.045em; }
