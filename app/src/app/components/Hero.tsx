@@ -1,4 +1,28 @@
 import Image from "next/image";
+import { Fragment } from "react";
+
+function NameLetters({ text, offset = 0 }: { text: string; offset?: number }) {
+  const words = text.split(" ");
+  return words.map((word, wordIndex) => {
+    const start = offset + words.slice(0, wordIndex).join(" ").length + (wordIndex > 0 ? 1 : 0);
+    return (
+      <Fragment key={wordIndex}>
+        {wordIndex > 0 && " "}
+        <span className="name-word">
+          {Array.from(word).map((letter, index) => (
+            <span
+              key={index}
+              className="name-letter"
+              style={{ animationDelay: `${100 + (start + index) * 45}ms` }}
+            >
+              {letter}
+            </span>
+          ))}
+        </span>
+      </Fragment>
+    );
+  });
+}
 
 export default function Hero() {
   return (
@@ -8,13 +32,15 @@ export default function Hero() {
         {/* Text */}
         <div className="hero-copy">
           <p className="eyebrow">
-            Full Stack Developer
+            FULL STACK DEVELOPER
           </p>
 
-          <h1 className="hero-title">
-            Muhamad Raafi
-            <span className="hero-surname">
-              Dewanto
+          <h1 className="hero-title" aria-label="Muhamad Raafi Dewanto">
+            <span aria-hidden="true">
+              <NameLetters text="Muhamad Raafi" />
+            </span>
+            <span className="hero-surname" aria-hidden="true">
+              <NameLetters text="Dewanto" offset={13} />
             </span>
           </h1>
 

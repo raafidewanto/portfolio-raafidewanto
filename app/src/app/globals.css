@@ -79,6 +79,24 @@ h1, h2, h3 { text-wrap: balance; }
 .hero .eyebrow { margin-bottom: 28px; color: var(--muted); }
 .hero-title { font-family: var(--font-display), Georgia, serif; font-size: clamp(3.5rem, 6.8vw, 6.25rem); font-weight: 400; line-height: 1.01; letter-spacing: -.055em; }
 .hero-surname { display: block; font-style: italic; color: var(--accent); }
+.name-word { display: inline-block; white-space: nowrap; }
+.name-letter { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .name-letter { animation: name-letter-sweep 550ms cubic-bezier(.25, .1, .25, 1) backwards; }
+  .portrait-frame { animation: portrait-entrance 1100ms cubic-bezier(.22, .61, .36, 1) 200ms backwards; }
+  .portrait-image { transition: transform 500ms cubic-bezier(.22, .61, .36, 1); }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .hero-portrait:hover .portrait-image { transform: scale(1.04); }
+}
+@keyframes name-letter-sweep {
+  from { clip-path: inset(-15% 100% -20% 0); }
+  to { clip-path: inset(-15% -25% -20% -15%); }
+}
+@keyframes portrait-entrance {
+  from { opacity: .2; transform: scale(.88); }
+  to { opacity: 1; transform: scale(1); }
+}
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 28px; margin-top: 36px; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 10px 24px; border-radius: 2px; font-weight: 500; font-size: .875rem; }
 .button-primary { background: var(--accent); color: var(--on-accent); }
